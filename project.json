@@ -1,5 +1,5 @@
 {
-  "name": "dog-guru-hunderassenlexikon-connector_Windows",
+  "name": "dog-guru-hunderassenlexikon-connector",
   "description": "Connects via GUI Integration to https://www.hundund.de/hunderassen/",
   "main": "Main.xaml",
   "dependencies": {

@@ -1,14 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.rasse="Mops" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.rasse="Mops" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="rasse" Type="InArgument(x:String)" />
     <x:Property Name="out_imageUri" Type="OutArgument(x:String)" />
     <x:Property Name="out_dogDescription" Type="OutArgument(x:String)" />
     <x:Property Name="out_exceptionDescription" Type="OutArgument(x:String)" />
+    <x:Property Name="out_uriDetailsPage" Type="OutArgument(x:String)" />
   </x:Members>
-  <mva:VisualBasic.Settings>
+  <VisualBasic.Settings>
     <x:Null />
-  </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1016,1771</sap:VirtualizedContainerService.HintSize>
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1217,2086</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -39,10 +40,12 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,21 +71,22 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="1019,1706" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap:VirtualizedContainerService.HintSize="1019,2021" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="977,1614" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="False" Private="False" Url="https://www.hundeo.com/hunderassen/">
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="977,1933" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="False" Private="False" Url="https://www.hundeo.com/hunderassen/">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="943,1513" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="943,1831" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="rasseExists" />
             </Sequence.Variables>
@@ -91,7 +95,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="901,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="901,82" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[out_exceptionDescription]</OutArgument>
               </Assign.To>
@@ -101,7 +105,7 @@
                 </InArgument>
               </Assign.Value>
             </Assign>
-            <ui:UiElementExists DisplayName="Element Exists 'H3'" Exists="[rasseExists]" sap:VirtualizedContainerService.HintSize="901,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Element Exists 'H3'" Exists="[rasseExists]" sap:VirtualizedContainerService.HintSize="901,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9f66f2a7-9629-4d78-87bf-917b2f91acb3" InformativeScreenshot="addaa210f6acc4cea079686be4bfdd8e" Selector="[String.Format(&quot;&lt;webctrl aaname='{0}' tag='H3' /&gt;&quot;, rasse)]">
                   <ui:Target.TimeoutMS>
@@ -113,15 +117,15 @@
                 </ui:Target>
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If Condition="[rasseExists]" sap:VirtualizedContainerService.HintSize="901,1113" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[rasseExists]" sap:VirtualizedContainerService.HintSize="901,1412" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="480,956" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="480,953" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <TryCatch DisplayName="Try Catch Open Details Page" sap:VirtualizedContainerService.HintSize="438,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch DisplayName="Try Catch Open Details Page" sap:VirtualizedContainerService.HintSize="438,746" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -129,17 +133,16 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Open Details Page" sap:VirtualizedContainerService.HintSize="376,519" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence DisplayName="Open Details Page" sap:VirtualizedContainerService.HintSize="400,518" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="ui:UiElement" Name="uiAncestor" />
-                          <Variable x:TypeArguments="x:String" Name="uriDetailsPage" />
                         </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:GetAncestor Ancestor="[uiAncestor]" DisplayName="Get Ancestor of 'H3'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetAncestor_1" UpLevels="1">
+                        <ui:GetAncestor Ancestor="[uiAncestor]" DisplayName="Get Ancestor of 'H3'" sap:VirtualizedContainerService.HintSize="358,107" sap2010:WorkflowViewState.IdRef="GetAncestor_1" UpLevels="1">
                           <ui:GetAncestor.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cef10131-15f8-4cfd-9085-9f76306b889b" InformativeScreenshot="514dfd1f7f6c2868264cd56e2be54831" Selector="[String.Format(&quot;&lt;webctrl aaname='{0}' tag='H3' /&gt;&quot;, rasse)]">
                               <ui:Target.TimeoutMS>
@@ -151,9 +154,9 @@
                             </ui:Target>
                           </ui:GetAncestor.Target>
                         </ui:GetAncestor>
-                        <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Attribute Details Page URI" sap:VirtualizedContainerService.HintSize="334,182" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                        <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Attribute Details Page URI" sap:VirtualizedContainerService.HintSize="358,183" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                           <ui:GetAttribute.Result>
-                            <OutArgument x:TypeArguments="x:String">[uriDetailsPage]</OutArgument>
+                            <OutArgument x:TypeArguments="x:String">[out_uriDetailsPage]</OutArgument>
                           </ui:GetAttribute.Result>
                           <ui:GetAttribute.Target>
                             <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[uiAncestor]" Id="c6caa736-88cb-4b98-98fb-6357189a9512">
@@ -166,7 +169,7 @@
                             </ui:Target>
                           </ui:GetAttribute.Target>
                         </ui:GetAttribute>
-                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Details Page" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[uriDetailsPage]" />
+                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To Details Page" sap:VirtualizedContainerService.HintSize="358,60" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[out_uriDetailsPage]" />
                       </Sequence>
                     </TryCatch.Try>
                     <TryCatch.Catches>
@@ -181,7 +184,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:String">[out_exceptionDescription]</OutArgument>
                             </Assign.To>
@@ -193,7 +196,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <TryCatch DisplayName="Try Catch Get Image URI Sequence" sap:VirtualizedContainerService.HintSize="438,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch DisplayName="Try Catch Get Image URI Sequence" sap:VirtualizedContainerService.HintSize="438,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -265,7 +268,7 @@
                       </Catch>
                     </TryCatch.Catches>
                   </TryCatch>
-                  <TryCatch DisplayName="Try Catch Get Description Sequence" sap:VirtualizedContainerService.HintSize="438,682" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                  <TryCatch DisplayName="Try Catch Get Description Sequence" sap:VirtualizedContainerService.HintSize="438,681" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -273,7 +276,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <TryCatch.Try>
-                      <Sequence DisplayName="Get Description Sequence" sap:VirtualizedContainerService.HintSize="376,455" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <Sequence DisplayName="Get Description Sequence" sap:VirtualizedContainerService.HintSize="400,453" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="ui:UiElement" Name="uiFirstImage" />
                           <Variable x:TypeArguments="ui:UiElement" Name="uiFirstParagraph" />
@@ -283,7 +286,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'P'" FoundElement="[uiFirstParagraph]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                        <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'P'" FoundElement="[uiFirstParagraph]" sap:VirtualizedContainerService.HintSize="358,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
                           <ui:WaitUiElementAppear.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ad7d5545-0623-41b1-9c7a-05e74658bbf4" InformativeScreenshot="d6846a005754de77c5a6788f7ba0faf9" Selector="&lt;webctrl parentid='main' tag='P' /&gt;">
                               <ui:Target.TimeoutMS>
@@ -295,7 +298,7 @@
                             </ui:Target>
                           </ui:WaitUiElementAppear.Target>
                         </ui:WaitUiElementAppear>
-                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="334,86" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                        <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="358,87" sap2010:WorkflowViewState.IdRef="GetValue_1">
                           <ui:GetValue.Target>
                             <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[uiFirstParagraph]" Id="f49b0c88-5b0e-450f-93b9-0d13b232e1da">
                               <ui:Target.TimeoutMS>
